@@ -33,7 +33,6 @@ COPY --from=builder /app/docs ./docs
 
 EXPOSE 3000
 
-ENV HOSTNAME v6.vbb.transport.rest
 ENV PORT 3000
 
 CMD ["node", "index.js"]
