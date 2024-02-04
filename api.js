@@ -116,7 +116,7 @@ const config = {
 	description: pkg.description,
 	version: pkg.version,
 	homepage: pkg.homepage,
-	docsLink: 'https://github.com/derhuerst/vbb-rest/blob/6/docs/readme.md',
+	docsLink: 'https://github.com/derhuerst/vbb-rest/blob/7/docs/readme.md',
 	openapiSpec: true,
 	logging: true,
 	aboutPage: false,

@@ -33,7 +33,7 @@ docker run -d -p 3000:3000 derhuerst/vbb-rest:6
 ```shell
 git clone https://github.com/derhuerst/vbb-rest.git
 cd vbb-rest
-git checkout 6
+git checkout 7
 npm install
 
 export HOSTNAME='my-vbb-rest-api.example.org'
