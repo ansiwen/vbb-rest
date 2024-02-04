@@ -18,7 +18,7 @@ LABEL org.opencontainers.image.description="An HTTP API for Berlin & Brandenburg
 LABEL org.opencontainers.image.authors="Jannis R <mail@jannisr.de>"
 LABEL org.opencontainers.image.documentation="https://github.com/derhuerst/vbb-rest/tree/7"
 LABEL org.opencontainers.image.source="https://github.com/derhuerst/vbb-rest"
-LABEL org.opencontainers.image.revision="6"
+LABEL org.opencontainers.image.revision="7"
 LABEL org.opencontainers.image.licenses="ISC"
 WORKDIR /app
 
