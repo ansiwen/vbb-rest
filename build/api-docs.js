@@ -189,42 +189,45 @@ curl 'https://v6.vbb.transport.rest/stops/reachable-from?latitude=52.52446&longi
 \`\`\`
 
 \`\`\`js
-[
-	{
-		"duration": 4,
-		"stations": [
-			{
-				"type": "stop",
-				"id": "900100051",
-				"name": "U Weinmeisterstr.",
-				"location": { /* … */ },
-				"products": { /* … */ },
-			}
-		]
-	},
-	// …
-	{
-		"duration": 7,
-		"stations": [
-			{
-				"type": "stop",
-				"id": "900007110",
-				"name": "U Bernauer Str.",
-				"location": { /* … */ },
-				"products": { /* … */ }
-			},
-			{
-				"type": "stop",
-				"id": "900100004",
-				"name": "S+U Jannowitzbrücke",
-				"location": { /* … */ },
-				"products": { /* … */ }
-			},
-			// …
-		]
-	},
-	// …
-]
+{
+	"reachable": [
+		{
+			"duration": 4,
+			"stations": [
+				{
+					"type": "stop",
+					"id": "900100051",
+					"name": "U Weinmeisterstr.",
+					"location": { /* … */ },
+					"products": { /* … */ },
+				}
+			]
+		},
+		// …
+		{
+			"duration": 7,
+			"stations": [
+				{
+					"type": "stop",
+					"id": "900007110",
+					"name": "U Bernauer Str.",
+					"location": { /* … */ },
+					"products": { /* … */ }
+				},
+				{
+					"type": "stop",
+					"id": "900100004",
+					"name": "S+U Jannowitzbrücke",
+					"location": { /* … */ },
+					"products": { /* … */ }
+				},
+				// …
+			]
+		},
+		// …
+	],
+	"realtimeDataUpdatedAt": 123456789, // UNIX timestamp
+}
 \`\`\`
 `,
 	'/stops/:id': `\
