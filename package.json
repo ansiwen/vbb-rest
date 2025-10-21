@@ -2,12 +2,13 @@
 	"private": true,
 	"name": "vbb-rest",
 	"description": "An HTTP API for Berlin & Brandenburg public transport.",
-	"version": "6.0.6",
+	"version": "6.0.7",
 	"type": "module",
 	"main": "index.js",
 	"author": "Jannis R <mail@jannisr.de>",
 	"contributors": [
-		"Sophia Mersmann <sophia.mersmann1@gmail.com>"
+		"Sophia Mersmann <sophia.mersmann1@gmail.com>",
+		"Traines <git@traines.eu>"
 	],
 	"homepage": "https://github.com/derhuerst/vbb-rest/tree/6",
 	"repository": "derhuerst/vbb-rest",
