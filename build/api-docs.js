@@ -261,38 +261,41 @@ curl 'https://v6.vbb.transport.rest/stops/900013102/departures?direction=9000141
 \`\`\`
 
 \`\`\`js
-[
-	{
-		"tripId": "1|61154|54|86|29042020",
-		"direction": "Ersatz S+U Warschauer Str.",
-		"line": {
-			"type": "line",
-			"id": "u1",
-			"name": "U1",
-			"mode": "bus",
-			"product": "bus",
-			// …
+{
+	"departures": [
+		{
+			"tripId": "1|61154|54|86|29042020",
+			"direction": "Ersatz S+U Warschauer Str.",
+			"line": {
+				"type": "line",
+				"id": "u1",
+				"name": "U1",
+				"mode": "bus",
+				"product": "bus",
+				// …
+			},
+
+			"when": "2020-04-29T19:31:00+02:00",
+			"plannedWhen": "2020-04-29T19:30:00+02:00",
+			"delay": 60,
+			"platform": null,
+			"plannedPlatform": null,
+
+			"stop": {
+				"type": "stop",
+				"id": "900013102",
+				"name": "U Kottbusser Tor",
+				"location": { /* … */ },
+				"products": { /* … */ },
+				// …
+			},
+
+			"remarks": [ /* … */ ],
 		},
-
-		"when": "2020-04-29T19:31:00+02:00",
-		"plannedWhen": "2020-04-29T19:30:00+02:00",
-		"delay": 60,
-		"platform": null,
-		"plannedPlatform": null,
-
-		"stop": {
-			"type": "stop",
-			"id": "900013102",
-			"name": "U Kottbusser Tor",
-			"location": { /* … */ },
-			"products": { /* … */ },
-			// …
-		},
-
-		"remarks": [ /* … */ ],
-	},
-	// …
-]
+		// …
+	],
+	"realtimeDataUpdatedAt": 123456789, // UNIX timestamp
+}
 \`\`\`
 `,
 	'/stops/:id/arrivals': `\
