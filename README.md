@@ -20,10 +20,10 @@ It is recommended that you let `bvg-rest` cache HAFAS responses within a [Redis]
 
 ### via Docker
 
-A Docker image [is available as `derhuerst/vbb-rest:7`](https://hub.docker.com/r/derhuerst/vbb-rest:7).
+A Docker image [is available as `docker.io/derhuerst/vbb-rest:7`](https://hub.docker.com/r/derhuerst/vbb-rest:7).
 
 ```shell
-docker run -d -p 3000:3000 derhuerst/vbb-rest:7
+docker run -d -p 3000:3000 docker.io/derhuerst/vbb-rest:7
 ```
 
 *Note:* The Docker image does not contain the Redis server.
