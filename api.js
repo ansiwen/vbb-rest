@@ -90,15 +90,68 @@ if (process.env.REDIS_URL) {
 	)
 }
 
-const modifyRoutes = (routes) => ({
-	...routes,
-	'/stations': stations,
-	'/stations/:id': station,
-	'/lines': lines,
-	'/lines/:id': line,
-	'/shapes/:id': shape,
-	'/maps/:type': maps,
-})
+const filterDeparturesResponse = (data) => {
+	const warnings = []
+	const seenWarningIds = new Set()
+	const departures = (data.departures || []).map((dep) => {
+		for (const r of dep.remarks || []) {
+			if (r.type === 'warning' && !seenWarningIds.has(r.id)) {
+				seenWarningIds.add(r.id)
+				warnings.push({
+					id: r.id,
+					summary: r.summary,
+					text: r.text,
+					priority: r.priority,
+					validFrom: r.validFrom,
+					validUntil: r.validUntil,
+					modified: r.modified,
+				})
+			}
+		}
+		return {
+			when: dep.when,
+			direction: dep.direction,
+			line: dep.line ? {
+				name: dep.line.name,
+				product: dep.line.product,
+				color: dep.line.color ? {
+					fg: dep.line.color.fg,
+					bg: dep.line.color.bg,
+				} : undefined,
+			} : undefined,
+		}
+	})
+	return {
+		departures,
+		warnings,
+		realtimeDataUpdatedAt: data.realtimeDataUpdatedAt,
+	}
+}
+
+const modifyRoutes = (routes) => {
+	const origDepartures = routes['/stops/:id/departures']
+
+	const filteredDepartures = (req, res, next) => {
+		if (req.query.sparse === 'true') {
+			const origJson = res.json.bind(res)
+			res.json = (data) => origJson(filterDeparturesResponse(data))
+			delete req.query.sparse
+		}
+		origDepartures(req, res, next)
+	}
+	Object.assign(filteredDepartures, origDepartures)
+
+	return {
+		...routes,
+		'/stations': stations,
+		'/stations/:id': station,
+		'/lines': lines,
+		'/lines/:id': line,
+		'/shapes/:id': shape,
+		'/maps/:type': maps,
+		'/stops/:id/departures': filteredDepartures,
+	}
+}
 
 const addHafasOpts = (opt, method, req) => {
 	if (method === 'journeys' && ('transferInfo' in req.query)) {
